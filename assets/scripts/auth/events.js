@@ -3,6 +3,7 @@
 const getFormFields = require('./../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
+const expenseEvents = require('./../expenses/events')
 
 const onSignUp = event => {
   event.preventDefault()
@@ -19,6 +20,7 @@ const onSignUp = event => {
   api.signUp(formData)
     .then(ui.signUpSuccess)
     .then(setTimeout(signInUp, 500))
+    .then(expenseEvents.onIndexExpenses(null, 1500))
     .catch(ui.failure)
 }
 
@@ -30,6 +32,7 @@ const onSignIn = event => {
 
   api.signIn(formData)
     .then(ui.signInSuccess)
+    .then(expenseEvents.onIndexExpenses(null, 1500))
     .catch(ui.failure)
 }
 

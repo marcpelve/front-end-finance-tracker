@@ -23,5 +23,6 @@ $(() => {
   $('#modal-close').on('click', authEvents.onClose)
   $('#modal-close-x').on('click', authEvents.onClose)
 
+  $('#refresh-index').on('click', expenseEvents.onIndexExpenses)
   $('#add-transaction-modal').on('submit', expenseEvents.onNewExpense)
 })

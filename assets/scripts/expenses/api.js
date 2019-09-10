@@ -3,7 +3,17 @@
 const config = require('./../config')
 const store = require('./../store')
 
-const newExpense = (data) => {
+const indexExpenses = data => {
+  return $.ajax({
+    url: config.apiUrl + '/expenses',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const newExpense = data => {
   return $.ajax({
     url: config.apiUrl + '/expenses',
     method: 'POST',
@@ -15,5 +25,6 @@ const newExpense = (data) => {
 }
 
 module.exports = {
+  indexExpenses,
   newExpense
 }
