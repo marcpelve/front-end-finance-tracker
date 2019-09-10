@@ -7,6 +7,7 @@
 // require('./example')
 
 const authEvents = require('./auth/events.js')
+const expenseEvents = require('./expenses/events.js')
 
 $(() => {
   $('.toggle-on-sign-in').hide()
@@ -21,4 +22,7 @@ $(() => {
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#modal-close').on('click', authEvents.onClose)
   $('#modal-close-x').on('click', authEvents.onClose)
+
+  $('#refresh-index').on('click', expenseEvents.onIndexExpenses)
+  $('#add-transaction-modal').on('submit', expenseEvents.onNewExpense)
 })
