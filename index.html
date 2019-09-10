@@ -121,35 +121,48 @@
       </fieldset>
     </form>
   </div>
+
   <div>
     <div class="action-bar row justify-content-center">
       <span>Transactions</span>
       <!-- Button trigger modal for ADD TRANSACTION -->
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#add-expense-modal">
-        Add Transaction
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#transaction-modal">
+        +
       </button>
 
       <!-- Modal for ADD TRANSACTION -->
-      <div class="modal fade" id="add-expense-modal" tabindex="-1" role="dialog" aria-labelledby="add-expense-modalLabel" aria-hidden="true">
+      <div class="modal fade" id="transaction-modal" tabindex="-1" role="dialog" aria-labelledby="transaction-modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="add-expense-modalLabel">Add a transaction</h5>
+              <h5 class="modal-title" id="transaction-modalLabel">Add a transaction</h5>
               <button id="modal-close-x" type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form id="change-password-modal" class="form-group" data-show="false">
+              <form id="add-transaction-modal" class="form-group" data-show="false">
                 <fieldset>
                   <label for="amount">Amount</label>
                   <br>
-                  <input type="text" name="expense[amount]" placeholder="100" class="form-control">
+                  <input type="number" name="expense[amount]" placeholder="100" class="form-control">
                   <br>
                   <br>
                   <label for="currency">Currency</label>
                   <br>
-                  <input type="text" name="expense[currency]" placeholder="USD" class="form-control">
+                  <select name="expense[currency]" class="form-control">
+                    <option value="USD">US Dollar (USD)</option>
+                    <option value="GBP">Pound Sterling (GBP)</option>
+                    <option value="EUR">Euro (EUR)</option>
+                    <option value="JPY">Japanese Yen (JPY)</option>
+                    <option value="AUD">Australian Dollar (AUD)</option>
+                    <option value="CAD">Canadian Dollar (CAD)</option>
+                    <option value="CHF">Swiss Franc (CHF)</option>
+                    <option value="RMB">CNY Renminbi (RMB)</option>
+                    <option value="SEK">Swedish Krona (SEK)</option>
+                    <option value="NZD">New Zealand Dollar (NZD)</option>
+                    <option value="MXN">Mexican Peso (MXN)</option>
+                  </select>
                   <br>
                   <br>
                   <label for="currency">Description</label>
@@ -159,11 +172,10 @@
                   <br>
                   <label for="currency">Date of Transaction</label>
                   <br>
-                  <input type="text" name="expense[transaction_date]" placeholder="2019/10" class="form-control">
-                  <br>
+                  <input type="date" name="expense[transaction_date]" class="form-control">
                   <br>
                   <hr>
-                  <input type="submit" class="btn btn-primary" value="Change password">
+                  <input type="submit" class="btn btn-primary" value="Add transaction">
                 </fieldset>
               </form>
             </div>
@@ -174,55 +186,7 @@
           </div>
         </div>
       </div>
-
-      <button id="sign-out" type="button" class="btn btn-secondary toggle-on-sign-in" data-show="false">Sign Out</button>
     </div>
-
-
-  </section>
-
-  <div id="sign-up-in" class="row justify-content-center">
-    <form id="sign-up" class="col-5 form-group border rounded toggle-off-sign-in space-out" data-show="true">
-      <fieldset>
-        <legend>Sign up</legend>
-
-        <label for="inputEmail">Email address</label>
-        <input type="text" name="credentials[email]" class="form-control" placeholder="Email">
-        <small id="emailHelp" class="form-text text-muted">Do not use a real Email/PW, this is not secure.</small>
-        <br>
-
-        <label for="password">Password</label>
-        <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
-        <br>
-
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Confirm password">
-        <br>
-
-        <input type="submit" class="btn btn-primary" value="Sign up">
-        <br>
-        <br>
-
-      </fieldset>
-    </form>
-
-    <form id='sign-in' class="col-5 form-group border rounded toggle-off-sign-in space-out" data-show="true">
-      <fieldset>
-        <legend>Sign in</legend>
-
-        <label for="inputEmail">Email address</label>
-        <input type="text" name="credentials[email]" class="form-control" placeholder="Email">
-        <br>
-
-        <label for="password">Password</label>
-        <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
-        <br>
-
-        <input type="submit" class="btn btn-primary" value="Sign in">
-      </fieldset>
-    </form>
-    <button type="button" class="btn btn-warning">Edit Transaction</button>
-    <button type="button" class="btn btn-danger">Delete Transaction</button>
   </div>
   <div class="transaction-content"></div>
 </div>

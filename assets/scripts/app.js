@@ -23,5 +23,5 @@ $(() => {
   $('#modal-close').on('click', authEvents.onClose)
   $('#modal-close-x').on('click', authEvents.onClose)
 
-  $('')
+  $('#add-transaction-modal').on('submit', expenseEvents.onNewExpense)
 })
