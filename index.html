@@ -127,7 +127,7 @@
       <span>Transactions</span>
       <button id="refresh-index" type="button" class="btn btn-secondary">Refresh Transactions</button>
       <!-- Button trigger modal for ADD TRANSACTION -->
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#transaction-modal">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#transaction-modal" data-backdrop="static" data-keyboard="false">
         +
       </button>
 
@@ -136,8 +136,8 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="transaction-modalLabel">Add a transaction</h5>
-              <button id="modal-close-x" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <h5 class="modal-title" id="transaction-modalLabel">Add or edit a transaction</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -176,19 +176,19 @@
                   <input type="date" name="expense[transaction_date]" class="form-control">
                   <br>
                   <hr>
-                  <input type="submit" class="btn btn-primary" value="Add transaction">
+                  <input type="submit" class="btn btn-primary" value="Add/Edit transaction">
                 </fieldset>
               </form>
             </div>
             <div class="modal-footer">
               <span id="modal-message"></span>
-              <button id="modal-close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="transaction-content"></div>
+  <div class="transaction-content container justify-content-center"></div>
 </body>
 </html>
