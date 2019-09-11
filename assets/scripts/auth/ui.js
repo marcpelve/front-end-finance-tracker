@@ -2,6 +2,7 @@
 
 const store = require('./../store')
 const messages = require('./messages')
+const expenseEvents = require('./../expenses/events')
 
 const signUpSuccess = (data) => {
   messages.changeMessage('Successfully signed up.', 'alert alert-primary')
@@ -18,6 +19,8 @@ const signInSuccess = data => {
   $('.toggle-off-sign-in').hide()
 
   $('form').trigger('reset')
+
+  expenseEvents.onIndexExpenses(null)
 }
 
 const changePasswordSuccess = data => {
