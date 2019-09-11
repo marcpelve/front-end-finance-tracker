@@ -123,7 +123,7 @@
   </div>
 
   <div>
-    <div class="action-bar row justify-content-center">
+    <div class="action-bar row justify-content-center toggle-on-sign-in">
       <span>Transactions</span>
       <button id="refresh-index" type="button" class="btn btn-secondary">Refresh Transactions</button>
       <!-- Button trigger modal for ADD TRANSACTION -->
@@ -146,14 +146,14 @@
                 <fieldset>
                   <label for="amount">Amount</label>
                   <br>
-                  <input type="number" name="expense[amount]" placeholder="100" class="form-control">
+                  <input type="number" name="expense[amount]" placeholder="100" class="form-control" required>
                   <br>
                   <br>
                   <label for="currency">Currency</label>
                   <br>
-                  <select name="expense[currency]" class="form-control">
+                  <select name="expense[currency]" class="form-control" required>
                     <option value="USD">US Dollar (USD)</option>
-                    <option value="GBP">Pound Sterling (GBP)</option>
+                    <!-- <option value="GBP">Pound Sterling (GBP)</option>
                     <option value="EUR">Euro (EUR)</option>
                     <option value="JPY">Japanese Yen (JPY)</option>
                     <option value="AUD">Australian Dollar (AUD)</option>
@@ -162,18 +162,18 @@
                     <option value="RMB">CNY Renminbi (RMB)</option>
                     <option value="SEK">Swedish Krona (SEK)</option>
                     <option value="NZD">New Zealand Dollar (NZD)</option>
-                    <option value="MXN">Mexican Peso (MXN)</option>
+                    <option value="MXN">Mexican Peso (MXN)</option> -->
                   </select>
                   <br>
                   <br>
                   <label for="currency">Description</label>
                   <br>
-                  <input type="text" name="expense[description]" placeholder="Amazon" class="form-control">
+                  <input type="text" name="expense[description]" placeholder="Amazon" class="form-control" required>
                   <br>
                   <br>
                   <label for="currency">Date of Transaction</label>
                   <br>
-                  <input type="date" name="expense[transaction_date]" class="form-control">
+                  <input type="date" name="expense[transaction_date]" class="form-control" required>
                   <br>
                   <hr>
                   <input type="submit" class="btn btn-primary" value="Add/Edit transaction">
@@ -181,7 +181,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <span id="modal-message"></span>
+              <span class="modal-message"></span>
               <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Close</button>
             </div>
           </div>
