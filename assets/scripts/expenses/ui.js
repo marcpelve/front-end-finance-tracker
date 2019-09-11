@@ -19,6 +19,11 @@ const newExpenseSuccess = data => {
 
 const updateStoreSuccess = data => {
   store.updateExpense = data.expense
+
+  $("input[name*='expense[amount]']").val(store.updateExpense.amount)
+  $("input[name*='expense[currency]']").val(store.updateExpense.currency)
+  $("input[name*='expense[description]']").val(store.updateExpense.description)
+  $("input[name*='expense[transaction_date]']").val(store.updateExpense.transaction_date)
 }
 
 const updateExpenseSuccess = data => {
