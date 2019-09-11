@@ -64,10 +64,16 @@ const onDeleteExpense = event => {
     .catch(ui.failure)
 }
 
+const onClearContent = () => {
+  $('.transaction-content').empty()
+  $('#transaction-total').empty()
+}
+
 module.exports = {
   onIndexExpenses,
   onNewExpense,
   onUpdateExpense,
   onUpdateStore,
-  onDeleteExpense
+  onDeleteExpense,
+  onClearContent
 }

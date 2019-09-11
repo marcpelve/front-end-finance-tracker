@@ -8,6 +8,15 @@ const indexExpensesSuccess = data => {
   const indexExpensesHtml = indexExpensesTemplate({ expenses: data.expenses })
   $('.transaction-content').html(indexExpensesHtml)
 
+  const transactionsList = data.expenses
+
+  let total = 0
+  for (const transaction in transactionsList) {
+    total += transactionsList[transaction].amount
+  }
+
+  $('#transaction-total').text('$' + total)
+
   $('form').trigger('reset')
 }
 

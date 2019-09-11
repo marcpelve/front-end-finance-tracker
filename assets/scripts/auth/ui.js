@@ -52,6 +52,8 @@ const signOutSuccess = data => {
   $('.toggle-on-new-game').hide()
   $('.toggle-off-sign-in').show()
 
+  expenseEvents.onClearContent()
+
   $('form').trigger('reset')
 }
 
