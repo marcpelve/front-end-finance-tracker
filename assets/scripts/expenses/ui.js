@@ -5,8 +5,6 @@ const store = require('./../store')
 const indexExpensesTemplate = require('./../templates/expense-listing.handlebars')
 
 const indexExpensesSuccess = data => {
-  messages.changeMessage(`Welcome ${store.user.email}`, 'alert alert-primary')
-
   const indexExpensesHtml = indexExpensesTemplate({ expenses: data.expenses })
   $('.transaction-content').html(indexExpensesHtml)
 
@@ -14,7 +12,24 @@ const indexExpensesSuccess = data => {
 }
 
 const newExpenseSuccess = data => {
-  messages.changeMessage('Successfully created new expense.', 'alert alert-primary')
+  messages.changeMessage('Successfully created transcation.', 'alert alert-primary')
+
+  $('form').trigger('reset')
+}
+
+const updateStoreSuccess = data => {
+  store.updateExpense = data.expense
+}
+
+const updateExpenseSuccess = data => {
+  messages.changeMessage('Successfully updated transaction', 'alert alert-primary')
+
+  store.updateExpense = undefined
+  $('form').trigger('reset')
+}
+
+const deleteExpenseSuccess = data => {
+  messages.changeMessage('Successfully deleted transaction', 'alert alert-primary')
 
   $('form').trigger('reset')
 }
@@ -28,5 +43,8 @@ const failure = data => {
 module.exports = {
   indexExpensesSuccess,
   newExpenseSuccess,
+  updateStoreSuccess,
+  updateExpenseSuccess,
+  deleteExpenseSuccess,
   failure
 }

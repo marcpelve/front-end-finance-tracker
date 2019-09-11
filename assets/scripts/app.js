@@ -22,7 +22,12 @@ $(() => {
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#modal-close').on('click', authEvents.onClose)
   $('#modal-close-x').on('click', authEvents.onClose)
+  $('.modal-close').on('click', authEvents.onClose)
+  $('.close').on('click', authEvents.onClose)
 
   $('#refresh-index').on('click', expenseEvents.onIndexExpenses)
   $('#add-transaction-modal').on('submit', expenseEvents.onNewExpense)
+
+  $('.transaction-content').on('click', '.edit-transaction', expenseEvents.onUpdateStore)
+  $('.transaction-content').on('click', '.delete-transaction', expenseEvents.onDeleteExpense)
 })

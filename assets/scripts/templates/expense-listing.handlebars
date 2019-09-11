@@ -1,16 +1,15 @@
 {{#each expenses as |expense|}}
-{{log expense}}
-<div class="container">
-  <div class="row" data-id="{{expense.id}}">
-    <div class="col-12">{{limit expense.description 20}}</div>
-    <div class="col-7">
-      <div class="col-12">{{expense.transaction_date}}</div>
-      <div class="col-12">Total money test</div>
-    </div>
-    <div class="col-5">{{expense.amount}}</div>
-    <!-- <button type="submit" class="btn btn-warning edit-transaction">Edit</button> -->
-    <button type="submit" class="btn btn-danger delete-transaction">Remove</button>
+<section class="row" data-id="{{expense.id}}">
+  <div class="col-12">{{limit expense.description 30}}</div>
+  <div class="col-7">
+    <div class="col-12">{{expense.transaction_date}}</div>
+    <div class="col-12">Total money test</div>
   </div>
-</div>
+  <div class="col-5">{{expense.amount}}</div>
+  <button type="button" class="btn btn-warning edit-transaction" data-toggle="modal" data-target="#transaction-modal" data-backdrop="static" data-keyboard="false">
+    Edit
+  </button>
+  <button type="button" class="btn btn-danger delete-transaction">Remove</button>
+</section>
 
 {{/each}}
