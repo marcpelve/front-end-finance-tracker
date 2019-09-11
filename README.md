@@ -1,83 +1,146 @@
+# Finance management tracker - Front-end Client
+
+## App Summary
+A financial management app that currently allows the user to have personalized transactions that they can input to track. It displays all your transactions in list format, complete with date, amount, currency and description of the transaction.
+
+***Transaction actions currently supported:***
+- Refresh (list) transactions
+- Create
+- Edit
+- Delete
+
+## Links
+**Deployed front-end client:** https://marcpelve.github.io/front-end-finance-tracker/
+
+**Front-end client repository:** https://github.com/marcpelve/front-end-finance-tracker
+
+**Deployed back-end API:** https://protected-castle-96334.herokuapp.com
+
+**Back-end API repository:** https://github.com/marcpelve/back-end-finance-tracker
+
+## Technologies
+HTML5, CSS3, SASS, Bootstrap
+
+JavaScript, jQuery, Handlebars.js
+
+NodeJS, GruntJS
 
 
+## Development documentation
 
-# Requirements
+### Wireframes && User stories
+<details><summary>Wireframes</summary>
 
-In order to get a satisfactory score, by the time you present your project, you
-**must** meet the following requirements:
+![Authentication view](wireframe_pg1.png)
 
-### Deployment
-Be deployed online, where the rest of the world can access it.
-1.  [ ]  Host on your public Github page, not Github Enterprise.
-1.  [ ]  Deploy client application on GH pages.
-1.  [ ]  Deploy server application on Heroku.
+![App view](wireframe_pg2.png)
+</details>
 
-### Version Control
-Demonstrate using version control by:
-1.  [ ]  Sharing your work through a git repository hosted on Github.
-1.  [ ]  Making frequent, cohesive commits dating back to the **first day**
-of the project week.
-1.  [ ]  1 commit on the first day of project week on both repos.
-1.  [ ]  At least 1 commit every day during project week (not necessarily on both repos).
+<details><summary>User stories</summary>
+As a user, I want to be able to sign in.
+As a user, I want to be able to log in.
+As a user, I want to be able to change passwords.
+As a user, I want to be able to sign out.
 
-### Documentation
-Produce documentation in the form of a **README**, which must:
-1.  [ ] Create 2 Github repos (one for your front-end and one for your back-end)
-1.  [ ] Pin both repositories on GitHub as a Popular Repository
-1.  [ ] Each repo will need a README.md file with a link to the other repo and an explanation of the what the app does and how it works.
-1.  [ ] Each repo must contain the link to both deployed sites
-1.  [ ] Complete the repository `Description` field and `Website` field with a meaningful sentence description of the application and link to the live URL
-![github image](https://git.generalassemb.ly/storage/user/3667/files/beae41ae-aaaa-11e7-8867-63958d376a0b)
-1.  [ ] List technologies used
-1.  [ ] List unsolved problems which would be fixed in future iterations.
-1.  [ ] Document your planning and tell a story about your development process and problem-solving strategy.
+As a user, I want to be able to see all my transactions.
+As a user, I want to be able to create a transaction.
+As a user, I want to be able to edit a transaction.
+As a user, I want to be able to delete a transaction.
+As a user, I want to be able to set a budget.
+As a user, I want to see a very basic budget analysis of the month.
+</details>
 
-Your front-end repo's README should also have
-1.  [ ] Link to wireframes and user stories.
+### Client - Front-end
+##### Setup and intialize to local/remote and Git Pages
+Install dependencies and work with locally with Grunt
+- Use `npm` to install dependencies
+- Use `grunt` to deploy to Git Pages
 
-Your back-end repo's README should also have
-1.  [ ] Link to Entity Relationship Diagram (ERD).
-
-### Auth Specifications
-1.  [ ] Signup with email, password, and password confirmation.
-1.  [ ] Login with email and password.
-1.  [ ] Logout when logged in.
-1.  [ ] Change password with current and new password.
-1.  [ ] Signup and Signin must only be available to not signed in users.
-1.  [ ] Logout and Change password must only be available to signed in users.
-1.  [ ] Give feedback to the user after each action's success or failure.
-1.  [ ] All forms must clear after submit success and user sign-out
-    - [ ] (Optional) Reset form to initial state on failure
-
-### Client Specifications
-1.  [ ] Use a front-end Javascript app to communicate with your API (both read and write) and render data that it receives in the browser.
-1.  [ ] Use jQuery for DOM manipulation and event handling.
-1.  [ ] Use Handlebars for view rendering.
-1.  [ ] Have semantically clean HTML and CSS
-1.  [ ] User must be able to create a new resource
-1.  [ ] User must be able to update a resource
-1.  [ ] User must be able to delete a resource
-1.  [ ] User must be able to view a single or multiple resource(s)
-1.  [ ] All resource actions that change data must only be available to a signed in user.
-1.  [ ] Give feedback to the user after each action's success or failure.
-1.  [ ] All forms must clear after submit success and user sign-out
-    - [ ] (Optional) Reset form to initial state on failure
+##### Structure planning - Linking to API
+Link to API resource and use for protected transactions
+- `User` resource requests for authentication
+- `Expense` resource to be used as transactions listing
+  - Protected resource will require authorization token
 
 
-### API Specifications
-1.  [ ] Build an API using Ruby on Rails and Postgresql.
-1.  [ ] Create at least 4 RESTful routes for handling GET, POST, PUT/PATCH, and DELETE requests.
-1.  [ ] Any actions which change data must be authenticated and the data must be "owned" by the user performing the change.
-1.  [ ] Have at least 1 resource that has a relationship to User
+  `Users` -|--< `Expenses`
 
-### DO NOT!!
-Your app **must not**:
-1.  [ ]   Delete your repository at any time or start over.
-1.  [ ]   Rely on refreshing the page for any functionality.
-1.  [ ]   Have any user-facing bugs.
-    - [ ] Display non-functional buttons, nor buttons that do not successfully complete a task.
-    - [ ] Show actions at inappropriate times (example:  change password form when a user is not signed in).
-    - [ ] Forms not clearing at appropriate times (example: sign up form not clearing after success).
-1.  [ ]   Use alerts for anything.
-1.  [ ]   Display errors or warnings in the console.
-1.  [ ]   Display debugging messages in the console.
+  **Expenses** belong to **User**
+
+  **User** has many **Expenses**
+
+  <table style="display:inline">
+  <th colspan="2" style="text-align:center">Expenses</th>
+  <th colspan="2" style="text-align:center">User</th>
+  <tr>
+  <td>id</td>
+  <td>primary key</td>
+  <td>id</td>
+  <td>primary key</td>
+  </tr>
+  <tr>
+  <td>amount</td>
+  <td>integer</td>
+  <td>email</td>
+  <td>string</td>
+  </tr>
+  <tr>
+  <td>currency</td>
+  <td>string</td>
+  <td>password</td>
+  <td>string</td>
+  </tr>
+  <tr>
+  <td>description</td>
+  <td>string</td>
+  <td>password_confirmation</td>
+  <td>string</td>
+  </tr>
+  <tr>
+  <td>user_id</td>
+  <td>foreign key</td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td>transaction_date</td>
+  <td>date</td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td>created_at</td>
+  <td>datetime</td>
+  <td>created_at</td>
+  <td>datetime</td>
+  </tr>
+  <tr>
+  <td>updated_at</td>
+  <td>datetime</td>
+  <td>updated_at</td>
+  <td>datetime</td>
+  </tr>
+  </table>
+
+##### Data Display
+Use handlebars and jQuery to dynamically display data
+- Handles bars to be used for main transcation listing
+
+##### End Point Testing
+Create curl scripts to test routing and resource end points
+
+<ul style="list-style-type:none;">
+  <li>get -> #index, #show<li>
+  <li>post -> #create</li>
+  <li>patch -> #update</li>
+  <li>delete -> #destroy</li>
+</ul>
+
+### Project problem realizations
+Early on I realized the budget creation and using the transaction info to provide a full fledged financial management app experience was not going to be possible in the given time frame. I quickly pivoted and made arrangements to move that area to be future implementations for the app. 
+
+#### Potential updates
+1. Resource `profile` with to allow more constraints for data manipulation
+2. Use profile resource to allow budget manipulation and representation with JS
+3. Create search bar and link to API search action for better data display
+3. Make requests to 3rd party API for more app functionality
