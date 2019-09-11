@@ -14,6 +14,9 @@ const indexExpensesSuccess = data => {
 const newExpenseSuccess = data => {
   messages.changeMessage('Successfully created transcation.', 'alert alert-primary')
 
+  $('.modal-message').text('Successfully created transaction')
+  $('.modal-message').show().delay(3000).fadeOut()
+
   $('form').trigger('reset')
 }
 
@@ -28,6 +31,8 @@ const updateStoreSuccess = data => {
 
 const updateExpenseSuccess = data => {
   messages.changeMessage('Successfully updated transaction', 'alert alert-primary')
+  $('.modal-message').text('Successfully updated transaction')
+  $('.modal-message').show().delay(3000).fadeOut()
 
   store.updateExpense = undefined
   $('form').trigger('reset')
@@ -41,6 +46,8 @@ const deleteExpenseSuccess = data => {
 
 const failure = data => {
   messages.changeMessage('There was an error with your action.', 'alert alert-danger')
+  $('.modal-message').text('There was an error with your action')
+  $('.modal-message').show().delay(3000).fadeOut()
 
   $('form').trigger('reset')
 }
