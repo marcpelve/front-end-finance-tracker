@@ -12,6 +12,16 @@ $baby-powder-white: #fdfffc;
 $baby-powder-white-hover: #e3e3e3;
 $pastel-brown: #846a6a;
 
+$magic-mint: #9ffcdf;
+$polished-pine: #52ad9c;
+$cambridge-blue: #9fb8ad;
+$pastel-gray: #ced0ce;
+$pastel-blue: #bbc7ce;
+$pale-turqoise: #bfedef;
+$tea-rose: #f4c3c2;
+$pale-pink: #f3dad8;
+$robin-egg-blue: #00cecb;
+$ivory: #ffffea;
 
 * {
   font-family: 'Montserrat', sans-serif;
@@ -44,6 +54,24 @@ input {
   text-align: center;
 }
 
+.action-bar {
+  margin-left: 2em;
+  margin-right: auto;
+}
+
+.action-bar > * {
+  padding-top: -1em;
+  padding-bottom: -1em;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+
+.big-text {
+  font-size: 30px;
+}
+
 .alt-color {
   background-color: $alt-color;
 }
@@ -65,6 +93,20 @@ input {
 
 .box:hover {
   background-color: $baby-powder-white-hover;
+}
+
+.list-color-1 {
+  background-color: $robin-egg-blue;
+}
+
+.list-color-2 {
+  background-color: $baby-powder-white;
+}
+
+.command-buttons {
+  margin-left: auto;
+  margin-right: 1em;
+  margin-bottom: 1em;
 }
 
 .top-left {
@@ -138,6 +180,7 @@ input {
   margin: 0 auto;
   text-align: center;
   width: 50%;
+  margin-bottom: 1em;
 }
 
 .spacer > * {
@@ -174,7 +217,7 @@ $colDefault     : #ffffff;
 $colHighlight   : #ffffff;
 $dropDown       : false;
 .navbar {
-  background-color: $bgDefault;
+  background-color: $robin-egg-blue;
   .navbar-brand {
     color: $colDefault;
     &:hover, &:focus {

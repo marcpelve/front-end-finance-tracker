@@ -123,15 +123,15 @@
   </div>
 
   <div>
-    <div class="action-bar row justify-content-center toggle-on-sign-in">
-      <span>Transactions</span>
-      <button id="refresh-index" type="button" class="btn btn-secondary">Refresh Transactions</button>
+    <div class="action-bar row toggle-on-sign-in">
+      <span class="big-text">Transactions</span>
       <!-- Button trigger modal for ADD TRANSACTION -->
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#transaction-modal" data-backdrop="static" data-keyboard="false">
+      <button type="button" class="btn btn-success add-button" data-toggle="modal" data-target="#transaction-modal" data-backdrop="static" data-keyboard="false">
         +
       </button>
-      <span>Total Transactions:</span>
-      <span id="transaction-total" class="toggle-on-sign-in"></span>
+      <button id="refresh-index" type="button" class="btn btn-secondary">Refresh Transactions</button>
+      <span class="big-text">Total Transactions:</span>
+      <span id="transaction-total" class="big-text toggle-on-sign-in"></span>
 
       <!-- Modal for ADD TRANSACTION -->
       <div class="modal fade" id="transaction-modal" tabindex="-1" role="dialog" aria-labelledby="transaction-modalLabel" aria-hidden="true">
