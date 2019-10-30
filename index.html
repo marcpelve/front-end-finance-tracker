@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Finances Tracker by Marc Pelve</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="d-md-flex d-block flex-row mx-md-auto mx-0">
+      <span class="navbar-brand">Finances Tracker</span>
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link disabled">Marc Pelve</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <section>
+    <br>
+
+    <div id='message' class=""></div>
+
+    <br>
+
+    <div class="spacer">
+      <div id='signed-in-user' class="inline-div"></div>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary toggle-on-sign-in" data-toggle="modal" data-target="#exampleModal">
+        Change Password
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+              <button id="modal-close-x" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="change-password-modal" class="form-group" data-show="false">
+                <fieldset>
+                  <label for="currentPassword">Current Password</label>
+                  <br>
+                  <input type="password" name="passwords[old]" placeholder="Current password" class="form-control">
+                  <br>
+                  <br>
+                  <label for="currentPassword">New Password</label>
+                  <br>
+                  <input type="password" name="passwords[new]" placeholder="New password" class="form-control">
+                  <br>
+                  <br>
+                  <hr>
+                  <input type="submit" class="btn btn-primary" value="Change password">
+                </fieldset>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <span id="modal-message"></span>
+              <button id="modal-close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="sign-out" type="button" class="btn btn-secondary toggle-on-sign-in" data-show="false">Sign Out</button>
+    </div>
+
+
+  </section>
+
+  <div id="sign-up-in" class="row justify-content-center">
+    <form id="sign-up" class="col-5 form-group border rounded toggle-off-sign-in space-out" data-show="true">
+      <fieldset>
+        <legend>Sign up</legend>
+
+        <label for="inputEmail">Email address</label>
+        <input type="text" name="credentials[email]" class="form-control" placeholder="Email">
+        <small id="emailHelp" class="form-text text-muted">Do not use a real Email/PW, this is not secure.</small>
+        <br>
+
+        <label for="password">Password</label>
+        <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
+        <br>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Confirm password">
+        <br>
+
+        <input type="submit" class="btn btn-primary" value="Sign up">
+        <br>
+        <br>
+
+      </fieldset>
+    </form>
+
+    <form id='sign-in' class="col-5 form-group border rounded toggle-off-sign-in space-out" data-show="true">
+      <fieldset>
+        <p>Want to test the site? <button id="test-sign-in" class="btn btn-outline-secondary">Login as test user</button></p>
+        <legend>Sign in</legend>
+
+        <label for="inputEmail">Email address</label>
+        <input type="text" name="credentials[email]" class="form-control" placeholder="Email">
+        <br>
+
+        <label for="password">Password</label>
+        <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
+        <br>
+
+        <input type="submit" class="btn btn-primary" value="Sign in">
+      </fieldset>
+    </form>
+  </div>
+
+  <div>
+    <div class="action-bar row toggle-on-sign-in">
+      <span class="big-text">Transactions</span>
+      <!-- Button trigger modal for ADD TRANSACTION -->
+      <button type="button" class="btn btn-success add-button" data-toggle="modal" data-target="#transaction-modal" data-backdrop="static" data-keyboard="false">
+        +
+      </button>
+      <button id="refresh-index" type="button" class="btn btn-secondary">Refresh Transactions</button>
+      <span class="big-text">Total Transactions:</span>
+      <span id="transaction-total" class="big-text toggle-on-sign-in"></span>
+
+      <!-- Modal for ADD TRANSACTION -->
+      <div class="modal fade" id="transaction-modal" tabindex="-1" role="dialog" aria-labelledby="transaction-modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="transaction-modalLabel">Add or edit a transaction</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="add-transaction-modal" class="form-group" data-show="false">
+                <fieldset>
+                  <label for="amount">Amount</label>
+                  <br>
+                  <input type="number" name="expense[amount]" placeholder="100" class="form-control" required>
+                  <br>
+                  <br>
+                  <label for="currency">Currency</label>
+                  <br>
+                  <select name="expense[currency]" class="form-control" required>
+                    <option value="USD">US Dollar (USD)</option>
+                    <!-- <option value="GBP">Pound Sterling (GBP)</option>
+                    <option value="EUR">Euro (EUR)</option>
+                    <option value="JPY">Japanese Yen (JPY)</option>
+                    <option value="AUD">Australian Dollar (AUD)</option>
+                    <option value="CAD">Canadian Dollar (CAD)</option>
+                    <option value="CHF">Swiss Franc (CHF)</option>
+                    <option value="RMB">CNY Renminbi (RMB)</option>
+                    <option value="SEK">Swedish Krona (SEK)</option>
+                    <option value="NZD">New Zealand Dollar (NZD)</option>
+                    <option value="MXN">Mexican Peso (MXN)</option> -->
+                  </select>
+                  <br>
+                  <br>
+                  <label for="currency">Description</label>
+                  <br>
+                  <input type="text" name="expense[description]" placeholder="Amazon" class="form-control" required>
+                  <br>
+                  <br>
+                  <label for="currency">Date of Transaction</label>
+                  <br>
+                  <input type="date" name="expense[transaction_date]" class="form-control" required>
+                  <br>
+                  <hr>
+                  <input type="submit" class="btn btn-primary" value="Add/Edit transaction">
+                </fieldset>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <span class="modal-message"></span>
+              <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="transaction-content container toggle-on-sign-in justify-content-center"></div>
+</body>
+</html>
