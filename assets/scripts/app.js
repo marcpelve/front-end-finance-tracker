@@ -14,6 +14,7 @@ $(() => {
   $('.toggle-off-sign-in').show()
 
   $('#sign-up').on('submit', authEvents.onSignUp)
+  $('#test-sign-in').on('click', authEvents.onTestSignIn)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password-modal').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('click', authEvents.onSignOut)
